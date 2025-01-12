@@ -37,3 +37,17 @@
 4. Открыть папку bin > Debug
 5. Найти и запустить .exe файл приложения
 
+## Демонстрация программы
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/connection.png "Окно подключения к базе данных")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/readers.png "Вкладка главного окна для взаимодействия с данными о читателях библиотеки")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/authors.png "Вкладка главного окна для взаимодействия с данными об авторах")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/genres.png "Вкладка главного окна для взаимодействия с данными о жанрах")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/books.png "Вкладка главного окна для взаимодействия с данными о книгах библиотеки")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/facts.png "Вкладка главного окна для создания фактов взятия / возврата книг библиотеки")
+
+![](https://github.com/urris-dev/LibraryAssistant/blob/master/LibraryAssistant/Images/reports.png "Вкладка главного окна для получения отчётов различного типа о работе библиотеки")
