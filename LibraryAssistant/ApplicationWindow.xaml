@@ -1,0 +1,724 @@
+﻿<Window x:Class="LibraryAssistant.ApplicationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAssistant"
+        mc:Ignorable="d"
+        Title="Library Assistant" Height="825" Width="820">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="ApplicationSections" Grid.ColumnSpan="2">
+            <TabItem x:Name="ApplicationUsersSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Читатели" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Height="508" HorizontalAlignment="Stretch" VerticalAlignment="Top" x:Name="UsersSectionSearchUserSection" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="SearchUserSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск читателя" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="SearchUserSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Имя:"/>
+                            <TextBox x:Name="SearchUserSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="SearchUserSectionSurnameLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Фамилия:"/>
+                            <TextBox x:Name="SearchUserSectionSurnameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="SearchUserSectionPatronymicLabel" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отчество:"/>
+                            <TextBox x:Name="SearchUserSectionPatronymicInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="SearchUserSectionSearchButton" Grid.Row="4" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Margin="3" Content="Найти читателя" Height="20" Click="SearchUserSectionSearchButton_Click"/>
+                            <Button x:Name="SearchUserSectionClearFieldsButton" Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" Margin="3" Content="Очистить все формы" Height="20" Click="SearchUserSectionClearFieldsButton_Click"/>
+                            <TextBlock x:Name="SearchUserSectionResultsTitle" Grid.ColumnSpan="4" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Найденные читатели" FontSize="12" FontWeight="Bold"/>
+                            <ListView x:Name="SearchUserSectionResultsList" Grid.ColumnSpan="4" Grid.Row="7" Grid.RowSpan="8" HorizontalAlignment="Stretch" Margin="3" SelectionChanged="SearchUserSectionResultsList_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Header="Фамилия" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Patronymic}" Header="Отчество" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Email}" Header="Почта" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=RegisterDate}" Header="Дата регистрации" Width="0"/>
+                                    </GridView>
+                                </ListView.View>
+                                <ListView.Resources>
+                                </ListView.Resources>
+                            </ListView>
+                            <Button x:Name="UserSectionSaveUserButton" Grid.ColumnSpan="4" Grid.Row="16" HorizontalAlignment="Stretch" Height="20" Margin="3" Content="Сохранить читателя" Click="UserSectionSaveUserButton_Click"/>
+                        </Grid>
+                        <Grid Height="508" HorizontalAlignment="Stretch" VerticalAlignment="Top" x:Name="UsersSectionCreateEditUserSection" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="CreateEditUserSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Создание/Редактирование читателя" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="CreateEditUserSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Имя:"/>
+                            <TextBox x:Name="CreateEditUserSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditUserSectionSurnameLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Фамилия:"/>
+                            <TextBox x:Name="CreateEditUserSectionSurnameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditUserSectionPatronymicLabel" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отчество:"/>
+                            <TextBox x:Name="CreateEditUserSectionPatronymicInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditUserSectionEmailLabel" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Почта:"/>
+                            <TextBox x:Name="CreateEditUserSectionEmailInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditUserSectionRegisterDateLabel" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Зарегистрирован:"/>
+                            <TextBlock x:Name="CreateEditUserSectionRegisterDateInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <TextBlock x:Name="CreateEditUserSectionBooksHistoryTitle" Grid.ColumnSpan="4" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Text="История взятия/возврата книг" FontSize="12" FontWeight="Bold"/>
+                            <ListView x:Name="CreateEditUserSectionBooksHistoryList" Grid.ColumnSpan="4" Grid.Row="7" Grid.RowSpan="8" HorizontalAlignment="Stretch" Margin="3">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=FType}" Header="Статус" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=TakingDate}" Header="Дата взятия" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=ReturnDate}" Header="Дата ожидаемого возврата" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=FactDate}" Header="Дата фактического возврата" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Book}" Header="Книга" Width="Auto"/>
+                                    </GridView>
+                                </ListView.View>
+                                <ListView.Resources>
+                                </ListView.Resources>
+                            </ListView>
+                            <Button x:Name="UserSectionDeleteUserButton" Grid.ColumnSpan="4" Grid.Row="16" HorizontalAlignment="Stretch" Margin="3" Height="20" Content="Удалить читателя" Click="UserSectionDeleteUserButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="ApplicationAuthorsSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Авторы" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Height="508" HorizontalAlignment="Stretch" VerticalAlignment="Top" x:Name="AuthorsSectionSearchAuthorSection" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="SearchAuthorSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск автора" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="SearchAuthorSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Имя:"/>
+                            <TextBox x:Name="SearchAuthorSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="SearchAuthorSectionSurnameLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Фамилия:"/>
+                            <TextBox x:Name="SearchAuthorSectionSurnameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="SearchAuthorSectionPatronymicLabel" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отчество:"/>
+                            <TextBox x:Name="SearchAuthorSectionPatronymicInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="SearchAuthorSectionSearchButton" Grid.ColumnSpan="4" Grid.Row="4" HorizontalAlignment="Stretch" Content="Найти автора" Height="20" Margin="3" Click="SearchAuthorSectionSearchButton_Click"/>
+                            <Button x:Name="SearchAuthorSectionClearFieldsButton" Grid.ColumnSpan="4" Grid.Row="5" HorizontalAlignment="Stretch" Content="Очистить все формы" Height="20" Margin="3" Click="SearchAuthorSectionClearFieldsButton_Click"/>
+                            <TextBlock x:Name="SearchAuthorSectionResultsTitle" Grid.ColumnSpan="4" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Найденные авторы" FontSize="12" FontWeight="Bold"/>
+                            <ListView x:Name="SearchAuthorSectionResultsList" Grid.ColumnSpan="4" Grid.Row="7" Grid.RowSpan="8" HorizontalAlignment="Stretch" Margin="3" SelectionChanged="SearchAuthorSectionResultsList_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Header="Фамилия" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Patronymic}" Header="Отчество" Width="Auto"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="AuthorSectionSaveAuthorButton" Grid.ColumnSpan="4" Grid.Row="16" HorizontalAlignment="Stretch" Content="Сохранить автора" Height="20" Margin="3" Click="AuthorSectionSaveAuthorButton_Click"/>
+                        </Grid>
+                        <Grid Height="508" HorizontalAlignment="Stretch" VerticalAlignment="Top" x:Name="AuthorsSectionCreateEditAuthorSection" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="CreateEditAuthorSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Создание/Редактирование автора" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="CreateEditAuthorSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Имя:"/>
+                            <TextBox x:Name="CreateEditAuthorSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditAuthorSectionSurnameLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Фамилия:"/>
+                            <TextBox x:Name="CreateEditAuthorSectionSurnameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditAuthorSectionPatronymicLabel" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отчество:"/>
+                            <TextBox x:Name="CreateEditAuthorSectionPatronymicInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="AuthorSectionDeleteAuthorButton" Grid.ColumnSpan="4" Grid.Row="16" HorizontalAlignment="Stretch" Content="Удалить автора" Height="20" Margin="3" Click="AuthorSectionDeleteAuthorButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="ApplicationGenresSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Жанры" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="GenresSectionSearchGenresSection" Height="380" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="SearchGenresSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск жанров" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="SearchGenresSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Название:"/>
+                            <TextBox x:Name="SearchGenresSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="SearchGenresSectionSearchButton" Grid.ColumnSpan="4" Grid.Row="2" HorizontalAlignment="Stretch" Content="Найти жанр" Height="20" Margin="3" Click="SearchGenresSectionSearchButton_Click"/>
+                            <Button x:Name="SearchGenresSectionClearFieldsButton" Grid.ColumnSpan="4" Grid.Row="3" HorizontalAlignment="Stretch" Content="Очистить все формы" Height="20" Margin="3" Click="SearchGenresSectionClearFieldsButton_Click"/>
+                            <TextBlock x:Name="SearchGenresSectionResultsTitle" Grid.ColumnSpan="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Найденные жанры" FontSize="12" FontWeight="Bold"/>
+                            <ListView x:Name="SearchGenresSectionResultsList" Grid.ColumnSpan="4" Grid.Row="5" Grid.RowSpan="4" HorizontalAlignment="Stretch" Margin="3" SelectionChanged="SearchGenresSectionResultsList_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="SearchGenresSectionSaveGenreButton" Grid.ColumnSpan="4" Grid.Row="10" HorizontalAlignment="Stretch" Content="Сохранить жанр" Height="20" Margin="3" Click="GenresSectionSaveGenreButton_Click"/>
+                        </Grid>
+
+                        <Grid x:Name="GenresSectionCreateEditGenreSection" Grid.Column="1" Height="380" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="CreateEditGenreSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Создание/Редактирование жанра" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="CreateEditGenreSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Название:"/>
+                            <TextBox x:Name="CreateEditGenreSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="CreateEditGenreSectionDeleteGenreButton" Grid.ColumnSpan="4" Grid.Row="10" HorizontalAlignment="Stretch" Content="Удалить жанр" Height="20" Margin="3" Click="GenresSectionDeleteGenreButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="ApplicationBooksSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Книги" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="BooksSectionSearchBookSection" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="SearchBookSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск книги" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="SearchBookSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Название:"/>
+                            <TextBox x:Name="SearchBookSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="SearchBookSectionSearchButton" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" Content="Найти книгу" Height="20" Margin="3" Click="SearchBookSectionSearchButton_Click"/>
+                            <Button x:Name="SearchBookSectionClearFieldsButton" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" Content="Очистить все формы" Height="20" Margin="3" Click="SearchBookSectionClearFieldsButton_Click"/>
+                            <TextBlock x:Name="SearchBookSectionResultsTitle" Grid.ColumnSpan="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Найденные книги" FontSize="12" FontWeight="Bold"/>
+                            <ListView x:Name="SearchBookSectionResultsList" Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="14" HorizontalAlignment="Stretch" Margin="3" SelectionChanged="SearchBookSectionResultsList_SelectionChanged">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=GenresCount}" Header="Жанры" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=AuthorsCount}" Header="Авторы" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=TextStatus}" Header="Статус" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Genres}" Header="Genres" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Authors}" Header="Authors" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="0"/>
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="SearchBookSectionSaveBookButton" Grid.ColumnSpan="4" Grid.Row="19" HorizontalAlignment="Stretch" Content="Сохранить книгу" Height="20" Margin="3" Click="SearchBookSectionSaveBookButton_Click"/>
+                        </Grid>
+                        <Grid x:Name="BooksSectionCreateEditBookSection" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="CreateEditBookSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Создание/Редактирование книги" FontSize="12" FontWeight="Bold"/>
+                            <Label x:Name="CreateEditBookSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Название:"/>
+                            <TextBox x:Name="CreateEditBookSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="CreateEditBookSectionStatusLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Статус:"/>
+                            <TextBlock x:Name="CreateEditBookSectionStatus" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="3"></TextBlock>
+                            <TextBlock x:Name="CreateEditBookSectionChoiceGenresTitle" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Работа с жанрами" FontSize="12" FontWeight="Bold"/>
+                            <Grid x:Name="CreateEditBookSectionChoiceGenresSection" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="7" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="ChoiceGenresSectionGenreInput" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3"/>
+                                <Button x:Name="ChoiceGenresSectionSearchGenreButton" Grid.Column="2"  Grid.ColumnSpan="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Content="Найти" Height="18" Margin="3" Click="ChoiceGenresSectionSearchGenreButton_Click"/>
+                                <ListView x:Name="ChoiceGenresSectionResultsList" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Stretch" Margin="3">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="ChoiceGenresSectionAddGenreButton" Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Center" Content="Добавить выбранный жанр" Height="20" Margin="3" Click="ChoiceGenresSectionAddGenreButton_Click"/>
+                            </Grid>
+                            <TextBlock x:Name="CreateEditBookSectionChoiceAuthorsTitle" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Работа с авторами" FontSize="12" FontWeight="Bold"/>
+                            <Grid x:Name="CreateEditBookSectionChoiceAuthorsSection" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="7" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="ChoiceAuthorsSectionAuthorInput" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="3"/>
+                                <Button x:Name="ChoiceAuthorsSectionSearchAuthorButton" Grid.Column="2"  Grid.ColumnSpan="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Content="Найти" Height="18" Margin="3" Click="ChoiceAuthorsSectionSearchAuthorButton_Click"/>
+                                <ListView x:Name="ChoiceAuthorsSectionResultsList" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" HorizontalAlignment="Stretch" Margin="3">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="Auto"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Header="Фамилия" Width="Auto"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Patronymic}" Header="Отчество" Width="Auto"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="ChoiceAuthorsSectionAddAuthorButton" Grid.Column="0"  Grid.ColumnSpan="3" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Center" Content="Добавить выбранного автора" Height="20" Margin="3" Click="ChoiceAuthorsSectionAddAuthorButton_Click"/>
+                            </Grid>
+                            <TextBlock x:Name="CreateEditBookSectionBookGenresTitle" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Жанры книги" FontSize="12" FontWeight="Bold"/>
+                            <Grid x:Name="CreateEditBookSectionBookGenresSection" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="6" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <ListView x:Name="BookGenresSectionGenresList" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="7" HorizontalAlignment="Stretch" Margin="3">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="BookGenresSectionDeleteGenreButton" Grid.ColumnSpan="1" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="Удалить выбранный жанр" Height="20" Margin="3" Click="BookGenresSectionDeleteGenreButton_Click"/>
+                            </Grid>
+                            <TextBlock x:Name="CreateEditBookSectionBookAuthorsTitle" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Авторы книги" FontSize="12" FontWeight="Bold"/>
+                            <Grid x:Name="CreateEditBookSectionBookAuthorsSection" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="6" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <ListView x:Name="BookAuthorsSectionAuthorsList" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="7" HorizontalAlignment="Stretch" Margin="3">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="Auto"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Header="Фамилия" Width="Auto"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding Path=Patronymic}" Header="Отчество" Width="Auto"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="BookAuthorsSectionDeleteAuthorButton" Grid.ColumnSpan="1" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="Удалить выбранного автора" Height="20" Margin="3" Click="BookAuthorsSectionDeleteAuthorButton_Click"/>
+                            </Grid>
+                            <Button x:Name="SearchBookSectionDeleteBookButton" Grid.ColumnSpan="4" Grid.Row="18" HorizontalAlignment="Stretch" Content="Удалить книгу" Height="20" Margin="3" Click="SearchBookSectionDeleteBookButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="ApplicationTakingReturnSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Факт взятия/возврата книги" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="TakingReturnSectionFactSection" Height="508" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="FactSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Создание факта взятия/возврата книги" FontWeight="Bold"/>
+                            <Label x:Name="FactSectionFactUserLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Читатель:"/>
+                            <TextBlock x:Name="FactSectionFactUserInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Text="Не выбран" FontWeight="Bold"/>
+                            <Label x:Name="FactSectionFactTypeLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Тип факта:"/>
+                            <RadioButton x:Name="FactSectionFactTypeTaking" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Content="Взятие"/>
+                            <RadioButton x:Name="FactSectionFactTypeReturn" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Content="Возврат"/>
+                            <Label x:Name="FactSectionReturnDateLabel" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Дата ожидаемого возвращения:"/>
+                            <DatePicker x:Name="FactSectionReturnDateInput" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3" SelectedDate="{Binding Path=Date, Mode=OneTime}"/>
+                            <TextBlock x:Name="FactSectionBooksListTitle" Grid.ColumnSpan="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Книги" FontWeight="Bold"/>
+                            <ListView x:Name="FactSectionBooksList" Grid.ColumnSpan="4" Grid.Row="5" Grid.RowSpan="9" HorizontalAlignment="Stretch" Margin="3">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=GenresCount}" Header="Жанры" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=AuthorsCount}" Header="Авторы" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=TextStatus}" Header="Статус" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="0"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="FactSectionDeleteSelectedBookButton" Grid.ColumnSpan="4" Grid.Row="14" HorizontalAlignment="Stretch" Margin="3" Content="Удалить выбранную книгу" Height="20" Click="FactSectionDeleteSelectedBookButton_Click"/>
+                            <Button x:Name="FactSectionCreateFactButton" Grid.ColumnSpan="4" Grid.Row="15" HorizontalAlignment="Stretch" Margin="3" Content="Создать факт" Height="20" Click="FactSectionCreateFactButton_Click"/>
+                        </Grid>
+                        <Grid x:Name="TakingReturnSectionAddUserBookSection" Height="508" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="AddUserSectionTitle" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск читателя" FontWeight="Bold"/>
+                            <Label x:Name="AddUserSectionNameLabel" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Имя:"/>
+                            <TextBox x:Name="AddUserSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="AddUserSectionSurnameLabel" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Фамилия:"/>
+                            <TextBox x:Name="AddUserSectionSurnameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Label x:Name="AddUserSectionPatronymicLabel" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отчество:"/>
+                            <TextBox x:Name="AddUserSectionPatronymicInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="AddUserSectionSearchUserButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Content="Найти читателя" HorizontalAlignment="Stretch" Height="20" Margin="3" Click="AddUserSectionSearchUserButton_Click"/>
+                            <Button x:Name="FactSectionClearFieldsButton" Grid.Column="2"  Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Stretch" Margin="3" Content="Очистить все формы" Height="20" Click="FactSectionClearFieldsButton_Click"/>
+                            <ListView x:Name="AddUserSectionUsersList" Grid.ColumnSpan="4" Grid.Row="5" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="3">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Header="Фамилия" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Patronymic}" Header="Отчество" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Email}" Header="Почта" Width="Auto"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="AddUserSectionAddSelectedUserButton" Grid.ColumnSpan="4" Grid.Row="8" Content="Добавить выбранного читателя" HorizontalAlignment="Stretch" Height="20" Margin="3" Click="AddUserSectionAddSelectedUserButton_Click"/>
+                            <TextBlock x:Name="AddBookSectionTitle" Grid.ColumnSpan="4" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Поиск книги" FontWeight="Bold"/>
+                            <Label x:Name="AddBookSectionNameLabel" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Название:"/>
+                            <TextBox x:Name="AddBookSectionNameInput" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="3"/>
+                            <Button x:Name="AddBookSectionSearchBookButton" Grid.ColumnSpan="4" Grid.Row="11" Content="Найти книгу" Height="20" HorizontalAlignment="Stretch" Margin="3" Click="AddBookSectionSearchBookButton_Click"/>
+                            <ListView x:Name="AddBookSectionBooksList" Grid.ColumnSpan="4" Grid.Row="12" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="3">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="ID" Width="0"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Название" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=GenresCount}" Header="Жанры" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=AuthorsCount}" Header="Авторы" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=TextStatus}" Header="Статус" Width="Auto"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding Path=Status}" Header="Status" Width="0"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="AddBookSectionAddSelectedBookButton" Grid.ColumnSpan="4" Grid.Row="15" Content="Добавить выбранную книгу" Height="20" HorizontalAlignment="Stretch" Margin="3" Click="AddBookSectionAddSelectedBookButton_Click"/>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem x:Name="ApplicationReportsSection">
+                <TabItem.Header>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Отчёты" FontSize="11" FontWeight="Bold"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid Height="500" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="ReportsSectionTitle" Grid.Column="2" Grid.ColumnSpan="4" Text="Путь для сохранения отчётов" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBox x:Name="ReportsSectionReportsPathInput" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="3" Height="20"/>
+                        <Button x:Name="ReportsSectionSaveReportsPathButton" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" Height="20" Margin="3" Content="Сохранить" Click="ReportsSectionSaveReportsPathButton_Click"/>
+                        <TextBlock x:Name="ReportsSectionDaylyReportsTitle" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="2" Text="Отчёты за день" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="3" Text="Перечень поступившых книг" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetBooksRecievedListButton" Grid.Column="5" Grid.Row="3" Height="20" Margin="3" Content="Подготовить" Click="GetBooksRecievedListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Text="Перечень новых читателей" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetNewUsersListButton" Grid.Column="5" Grid.Row="4" Height="20" Margin="3" Content="Подготовить" Click="GetNewUsersListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="5" Text="Перечень взятых книг" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetBooksTakenListButton" Grid.Column="5" Grid.Row="5" Height="20" Margin="3" Content="Подготовить" Click="GetBooksTakenListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Text="Перечень возвращённых книг" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetBooksReturnedListButton" Grid.Column="5" Grid.Row="6" Height="20" Margin="3" Content="Подготовить" Click="GetBooksReturnedListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="7" Text="Перечень книг, которые должны быть возвращены" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetBooksShouldReturnedListButton" Grid.Column="5" Grid.Row="7" Height="20" Margin="3" Content="Подготовить" Click="GetBooksShouldReturnedListButton_Click"/>
+                        <TextBlock x:Name="ReportsSectionMonthlyReportsTitle" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="8" Text="Отчёты за месяц" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="9" Text="Перечень самых читаемых жанров" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetMostReadGenresListButton" Grid.Column="5" Grid.Row="9" Height="20" Margin="3" Content="Подготовить" Click="GetMostReadGenresListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="10" Text="Перечень самых читаемых авторов" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetMostReadAuthorsListButton" Grid.Column="5" Grid.Row="10" Height="20" Margin="3" Content="Подготовить" Click="GetMostReadAuthorsListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="11" Text="Перечень самых читающих пользователей" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetMostReadUsersListButton" Grid.Column="5" Grid.Row="11" Height="20" Margin="3" Content="Подготовить" Click="GetMostReadUsersListButton_Click"/>
+                        <TextBlock x:Name="ReportsSectionCommonReportsTitle" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="12" Text="Общие отчёты" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="13" Text="Полный перечень книг" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetFullBooksListButton" Grid.Column="5" Grid.Row="13" Height="20" Margin="3" Content="Подготовить" Click="GetFullBooksListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="14" Text="Полный перечень читателей" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetFullUsersListButton" Grid.Column="5" Grid.Row="14" Height="20" Margin="3" Content="Подготовить" Click="GetFullUsersListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="15" Text="Полный перечень авторов" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetFullAuthorsListButton" Grid.Column="5" Grid.Row="15" Height="20" Margin="3" Content="Подготовить" Click="GetFullAuthorsListButton_Click"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="16" Text="Полный перечень жанров" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        <Button x:Name="GetFullGenresListButton" Grid.Column="5" Grid.Row="16" Height="20" Margin="3" Content="Подготовить" Click="GetFullGenresListButton_Click"/>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</Window>

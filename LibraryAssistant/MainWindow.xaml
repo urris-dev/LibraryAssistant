@@ -1,0 +1,27 @@
+﻿<Window x:Class="LibraryAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryAssistant"
+        mc:Ignorable="d"
+        Title="Подключение к базе данных" 
+        Height="325" Width="600" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock x:Name="DatabaseConnectionTitle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Данные для подключения" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="DatabaseConnectionHostLabel" Content="Хост:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,34,0,0"/>
+        <TextBox x:Name="DatabaseConnectionHostInput" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,38,0,0" Width="400"/>
+        <Label x:Name="DatabaseConnectionPortLabel" Content="Порт:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,65,0,0"/>
+        <TextBox x:Name="DatabaseConnectionPortInput" HorizontalAlignment="Left" Margin="152,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" PreviewTextInput="NumberValidationTextBox"/>
+        <Label x:Name="DatabaseConnectionUserLabel" Content="Пользователь:" HorizontalAlignment="Left" Margin="9,96,0,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox x:Name="DatabaseConnectionUserInput" HorizontalAlignment="Left" Margin="152,100,0,0" VerticalAlignment="Top" Width="400"/>
+        <Label x:Name="DatabaseConnectionPasswordLabel" Content="Пароль:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DatabaseConnectionPasswordInput" HorizontalAlignment="Left" Margin="152,131,0,0" VerticalAlignment="Top" Width="400"/>
+        <Label x:Name="DatabaseConnectionDatabaseNameLabel" Content="Название базы данных:" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DatabaseConnectionDatabaseNameInput" HorizontalAlignment="Left" Margin="152,162,0,0" VerticalAlignment="Top" Width="400"/>
+        <Button x:Name="DatabaseConnectionConnectButton" Content="Подключиться к БД" HorizontalAlignment="Left" Margin="13,197,0,0" VerticalAlignment="Top" Click="DatabaseConnectionConnectButton_Click"/>
+        <Label HorizontalAlignment="Left" Margin="10,222,0,0" Content="Ошибки:" VerticalAlignment="Top"/>
+        <TextBox x:Name="DatabaseConnectionErrorMessage" HorizontalAlignment="Left" Margin="152,226,0,0" Text="Ошибок нет" VerticalAlignment="Top" Width="400" IsEnabled="False"/>
+    </Grid>
+</Window>
